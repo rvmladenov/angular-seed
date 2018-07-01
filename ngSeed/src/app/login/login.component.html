@@ -1,0 +1,38 @@
+<section class="login-page">
+  <header>Login</header>
+  <div>
+    <form [formGroup]="form" class="login-form" (ngSubmit)="form.valid && login()">
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">Username</span>
+        </div>
+        <input 
+          type="email" 
+          class="form-control" 
+          placeholder="Email" 
+          aria-label="Email" 
+          aria-describedby="basic-addon1" 
+          placeholder="Email" 
+          formControlName="email">
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">Password</span>
+        </div>
+        <input 
+          type="password" 
+          class="form-control" 
+          placeholder="Password" 
+          aria-label="Password" 
+          aria-describedby="basic-addon1" 
+          placeholder="Password" 
+          formControlName="password">
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Login</button>
+
+    </form>
+  </div>
+</section>

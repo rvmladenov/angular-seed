@@ -1,0 +1,7 @@
+{
+    "http://localhost:4200/member": {
+        "changeOrigin": true,
+        "target": "https://dev1.spearhead-ag.ch",
+        "secure": true
+    }
+}
