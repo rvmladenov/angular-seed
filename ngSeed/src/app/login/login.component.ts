@@ -8,6 +8,7 @@ import { tap } from 'rxjs/operators';
 import { noop } from 'rxjs';
 import { LoginUser } from '@app/login/login-user.model';
 import { Login } from '@app/core/store/actions/auth.actions';
+import { URLS } from '@app/config/app.config';
 
 @Component({
   selector: 'app-login',
@@ -34,15 +35,14 @@ export class LoginComponent {
     this.auth
       .login(credentials.email, credentials.password)
       .pipe(
-        tap((user: LoginUser) => {
-          this.store.dispatch(new Login({ user }));
-          // TODO:
-          // this.router.navigateByUrl('/courses');
+        tap((userResponse: LoginUser) => {
+          const user: LoginUser = { username: credentials.email }
+          this.store.dispatch(new Login(user));
+          this.router.navigateByUrl(URLS.RENDERER);
         })
       )
       .subscribe(
-        noop,
-        (e) => console.log(e)
+        noop
       );
   }
 

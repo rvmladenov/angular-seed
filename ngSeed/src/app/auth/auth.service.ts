@@ -4,7 +4,9 @@ import { Observable } from "rxjs";
 import { LoginUser } from "@app/login/login-user.model";
 import { API_URLS } from "@app/config/app.config";
 
-@Injectable()
+@Injectable({ 
+    providedIn: 'root' 
+})
 export class AuthService {
 
     constructor(private http: HttpClient) { }

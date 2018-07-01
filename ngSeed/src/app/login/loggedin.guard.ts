@@ -10,7 +10,7 @@ import { URLS } from "@app/config/app.config";
 @Injectable({ 
     providedIn: 'root' 
 })
-export class AuthGuard implements CanActivate {
+export class LoggedInGuard implements CanActivate {
 
     constructor(private store: Store<AppState>, private router: Router) { }
 
@@ -18,8 +18,8 @@ export class AuthGuard implements CanActivate {
         return this.store.pipe(
             select(isLoggedIn),
             tap(loggedIn => {
-                if (!loggedIn) {
-                    this.router.navigateByUrl(URLS.LOGIN);
+                if (loggedIn) {
+                    this.router.navigateByUrl(URLS.RENDERER);
                 }
             }));
     }

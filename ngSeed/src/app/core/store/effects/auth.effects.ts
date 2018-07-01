@@ -4,16 +4,18 @@ import { Login, AuthActionTypes, Logout } from "@app/core/store/actions/auth.act
 import { tap } from 'rxjs/operators';
 
 import { defer, of } from 'rxjs';
+import { Router } from '@angular/router';
+import { LoginUser } from '@app/login/login-user.model';
 
 
 @Injectable()
 export class AuthEffects {
-  constructor(private actions$: Actions) { }
+  constructor(private actions$: Actions, private router: Router) { }
 
   @Effect({ dispatch: false })
   login$ = this.actions$.pipe(
     ofType<Login>(AuthActionTypes.LoginAction),
-    tap(action => localStorage.setItem("user", JSON.stringify(action.payload.user)))
+    tap(action => localStorage.setItem("user", JSON.stringify(action.payload)))
   );
 
   @Effect({ dispatch: false })
@@ -21,7 +23,7 @@ export class AuthEffects {
     ofType<Logout>(AuthActionTypes.LogoutAction),
     tap(() => {
       localStorage.removeItem("user");
-      // this.router.navigateByUrl('login');
+      this.router.navigateByUrl('login');
     })
   );
 

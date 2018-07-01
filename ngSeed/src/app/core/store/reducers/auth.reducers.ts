@@ -16,7 +16,7 @@ export function reducer(state = initialAuthState, action: AuthActions): AuthStat
     case AuthActionTypes.LoginAction:
       return {
         loggedIn: true,
-        user: action.payload.user
+        user: action.payload
       };
 
     case AuthActionTypes.LogoutAction:
