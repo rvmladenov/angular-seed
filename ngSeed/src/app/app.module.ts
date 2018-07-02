@@ -14,11 +14,13 @@ import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 import { LogoutModule } from './logout/logout.module';
 import { AppRoutingModule } from '@app/app-routing.module';
+import { HeaderComponent } from '@app/layout/header/header.component';
 // import { StoreRouterConnectingModule } from "@ngrx/router-store";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

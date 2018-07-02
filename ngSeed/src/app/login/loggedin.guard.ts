@@ -6,21 +6,20 @@ import { tap } from "rxjs/operators";
 import { isLoggedIn } from "@app/core/store/selectors/auth.selector";
 import { AppState } from "@app/reducers";
 import { URLS } from "@app/config/app.config";
+import { AuthService } from "@app/auth/auth.service";
 
-@Injectable({ 
-    providedIn: 'root' 
+@Injectable({
+    providedIn: 'root'
 })
 export class LoggedInGuard implements CanActivate {
 
-    constructor(private store: Store<AppState>, private router: Router) { }
+    // constructor(private store: Store<AppState>, private router: Router) { }
+    constructor(private authService: AuthService, private router: Router) { }
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-        return this.store.pipe(
-            select(isLoggedIn),
-            tap(loggedIn => {
-                if (loggedIn) {
-                    this.router.navigateByUrl(URLS.RENDERER);
-                }
-            }));
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+        if (this.authService.loggedIn) {
+            this.router.navigateByUrl(URLS.RENDERER);
+        }
+        return true;
     }
 }

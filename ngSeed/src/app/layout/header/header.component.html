@@ -1,0 +1,18 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav" *ngIf="showNav">
+      <li class="toggle-min">
+        <a href="javascript:;" (click)="onToggleOpenCloseNavMenu()"><i class="fa fa-bars"></i></a>
+      </li>
+      <li class="menu-button" (click)="onToggleOpenCloseNavMenuMobile()">
+        <div>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </div>
+      </li>
+    </ul>
+    <button type="button" (click)="logout()" *ngIf="isLoggedIn$ | async">logout</button>
+
+  </div>
+</nav>

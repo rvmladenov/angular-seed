@@ -11,7 +11,6 @@ import { Login } from '@app/core/store/actions/auth.actions';
 import { URLS } from '@app/config/app.config';
 
 @Component({
-  selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })

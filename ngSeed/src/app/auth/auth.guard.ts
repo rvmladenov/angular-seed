@@ -7,8 +7,8 @@ import { isLoggedIn } from "@app/core/store/selectors/auth.selector";
 import { AppState } from "@app/reducers";
 import { URLS } from "@app/config/app.config";
 
-@Injectable({ 
-    providedIn: 'root' 
+@Injectable({
+    providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
 
@@ -21,6 +21,17 @@ export class AuthGuard implements CanActivate {
                 if (!loggedIn) {
                     this.router.navigateByUrl(URLS.LOGIN);
                 }
+                // if (!loggedIn) {
+                //     if (state.url !== '/' + URLS.LOGIN) {
+                //         this.router.navigateByUrl(URLS.LOGIN);
+                //     }
+                // } else {
+                //     if (state.url === '/' + URLS.LOGIN) {
+                //         this.router.navigateByUrl(URLS.RENDERER);
+                //     }
+                // }
+
+                return isLoggedIn
             }));
     }
 }

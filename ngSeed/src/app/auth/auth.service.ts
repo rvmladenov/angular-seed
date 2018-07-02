@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable, BehaviorSubject } from "rxjs";
 import { LoginUser } from "@app/login/login-user.model";
 import { API_URLS } from "@app/config/app.config";
 
@@ -9,6 +9,8 @@ import { API_URLS } from "@app/config/app.config";
 })
 export class AuthService {
 
+    // loggedIn: BehaviorSubject<boolean> = new BehaviorSubject(false);
+    loggedIn = false;
     constructor(private http: HttpClient) { }
 
     login(username: string, password: string): Observable<LoginUser> {
